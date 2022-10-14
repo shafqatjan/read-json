@@ -1,0 +1,27 @@
+
+<ng-container *ngIf="loaded">
+      <label *ngIf="mycontrol">
+            {{mycontrol.label}}:
+            <ng-container *ngIf="mycontrol.type == 'text' || mycontrol.type == 'email'">
+                  <input [(ngModel)]="value" class="form-control"
+                        placeholder="{{mycontrol.placeholder}}">
+            </ng-container>
+            <ng-container *ngIf="mycontrol.type == 'select'">
+                  <select class="form-select" [(ngModel)]="value">
+                        <option *ngFor="let option of mycontrol.options" value="{{option}}">{{option}}
+                        </option>
+                  </select>
+            </ng-container>
+            <ng-container *ngIf="mycontrol.type == 'textarea'">
+                  <textarea [(ngModel)]="value" rows="10" class="form-control"
+                        cols="30">{{mycontrol.placeholder}}</textarea>
+
+            </ng-container>
+
+            <p>Internal data field: {{field}}</p>
+
+
+
+      </label>
+
+</ng-container>

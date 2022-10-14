@@ -1,0 +1,48 @@
+<div class="container">
+      <div class="table-responsive">
+            <h1> Display Data from CSV File </h1>
+            <input type="text" [(ngModel)]="searchText">
+            <table class="table table-striped">
+                  <thead>
+                        <tr>
+                              <th (click)="doSort('Id')">ID
+                                    <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('Internal Id')">Internal Id <app-sorticon [icon]="sortType">
+                                    </app-sorticon>
+                              </th>
+                              <th (click)="doSort('Type')">Type <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('Billing')">Billing <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('Email')">Email <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('Provider')">Provider <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('State')">State <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                              <th (click)="doSort('Trial')">Trial <app-sorticon [icon]="sortType"></app-sorticon>
+                              </th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                        <ng-container *ngIf="(userArray | searchFilter: searchText ).length>0; else NotFound">
+                              <tr *ngFor="let student of userArray | searchFilter: searchText">
+                                    <td>{{ student.Id }}</td>
+                                    <td>{{ student.InternalId }}</td>
+                                    <td>{{ student.Type }}</td>
+                                    <td>{{ student.Billing }}</td>
+                                    <td>{{ student.Email }}</td>
+                                    <td>{{ student.Provider }}</td>
+                                    <td>{{ student.State }}</td>
+                                    <td>{{ student.Trial }}</td>
+                              </tr>
+                        </ng-container>
+                        <ng-template #NotFound>
+                              No Record found
+                        </ng-template>
+                  </tbody>
+            </table>
+      </div>
+      <app-json-form-task (newItemEvent)="addItem($event)"></app-json-form-task>
+</div>

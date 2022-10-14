@@ -1,0 +1,51 @@
+<div class="container">
+      <legend>Dynamic form by ControlValueAccessor </legend>
+      <div class="row">
+            <div class="col col-md-8" style="overflow-y: scroll; max-height: 100vh">
+
+                  <!-- {{mystudentforms | json}} -->
+                  <ng-container *ngIf="loaded">
+                        <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                              <ng-container *ngIf="mystudentforms.length > 0">
+
+                                    <div *ngFor="let control of mystudentforms">
+                                          <!-- {{control | json}}<br> -->
+
+                                          <!-- <app-form-field [mycontrol]="control" [parentForm]="myForm"></app-form-field> -->
+                                          <app-custom formControlName="{{control.name}}" [mycontrol]="control">
+                                          </app-custom>
+
+                                          <!-- {{myForm.get(control.name)?.errors | json}} -->
+                                          <div *ngIf="formControl(control.name)?.invalid && 
+            (formControl(control.name)?.dirty || formControl(control.name)?.touched)" style="color:red">
+
+                                                <ng-container
+                                                      *ngIf="formControl(control.name)?.hasError('required') ">
+                                                      Please provide a {{control.name}}.
+                                                </ng-container>
+                                                <ng-container *ngIf="formControl(control.name)?.hasError('email') ">
+                                                      Please provide a valid {{control.name}}.
+                                                </ng-container>
+                                                <ng-container
+                                                      *ngIf="formControl(control.name)?.hasError('minlength') ">
+                                                      Please provide detail min 5 and max 15 {{control.name}}
+                                                      character
+                                                      long.
+                                                </ng-container>
+                                          </div>
+                                    </div>
+
+
+                              </ng-container>
+
+                              <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid">Send</button>
+
+                        </form>
+                  </ng-container>
+            </div>
+      </div>
+
+
+
+
+</div>

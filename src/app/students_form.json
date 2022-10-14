@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "name": "name",
+    "label": "Name",
+    "type": "text",
+    "placeholder" : "Your Name",
+    "validation": ["required"]
+  },
+  {
+    "id": 2,
+    "name": "email",
+    "label": "Email",
+    "type": "email",
+    "placeholder" : "Your email",
+    "validation": ["required", "email"]
+  },
+  {
+    "id": 3,
+    "name": "gender",    
+    "label": "Gender",    
+    "type": "select",
+    "placeholder" : "Your gender",
+    "options": ["Male", "Female"],
+    "validation" : ["required"]
+  },
+
+  {
+    "id": 3,
+    "name": "country",    
+    "label": "Country",    
+    "type": "select",
+    "placeholder" : "Your country",
+    "options": ["Pakistan", "India"],
+    "validation" : ["required"]
+  },
+  {
+    "id": 3,
+    "name": "details",
+    "label": "Details",
+    "type": "textarea",
+    "placeholder" : "Your details",
+    "validation" : ["required", "min:5", "min:15"]
+  }
+]

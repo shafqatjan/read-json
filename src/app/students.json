@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Jack",
+    "email": "jack@gmail.com",
+    "gender": "male",
+    "country": "Pakistan",
+    "details": "Jack detail"
+  },
+  {
+    "id": 2,
+    "name": "Peter",
+    "email": "peter@gmail.com",
+    "gender": "male",
+    "country": "Pakistan",
+    "details": "Peter detail"
+  },
+  {
+    "id": 3,
+    "name": "Mary",
+    "email": "mary@gmail.com",
+    "gender": "female",
+    "country": "Pakistan",
+    "details": "Mary detail"
+  },
+  {
+    "id": 4,
+    "name": "Smith",
+    "email": "smith@gmail.com",
+    "gender": "male",
+    "country": "Pakistan",
+    "details": "Smith detail"
+  },
+  {
+    "id": 5,
+    "name": "John",
+    "email": "john@gmail.com",
+    "gender": "male",
+    "country": "Pakistan",
+    "details": "John detail"
+  }
+]

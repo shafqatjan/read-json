@@ -1,0 +1,35 @@
+<!-- <p>json-read works! {{students | json}}</p> -->
+<div class="container">
+
+      <h1> Display Data from Json File </h1>
+      <input type="text" [(ngModel)]="searchText">
+      <table class="table table-striped">
+            <thead>
+                  <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Country</th>
+                        <th>Detail</th>
+                  </tr>
+            </thead>
+            <tbody>
+                  <ng-container *ngIf="(students | searchFilter: searchText ).length>0; else NotFound">
+                        <tr *ngFor="let student of students | searchFilter: searchText">
+                              <td>{{ student.id }}</td>
+                              <td>{{ student.name }}</td>
+                              <td>{{ student.email }}</td>
+                              <td>{{ student.gender }}</td>
+                              <td>{{ student.country }}</td>
+                              <td>{{ student.details }}</td>
+                        </tr>
+                  </ng-container>
+                  <ng-template #NotFound>
+                        No Record found
+                  </ng-template>
+            </tbody>
+      </table>
+
+      <app-json-form (newItemEvent)="addItem($event)"></app-json-form>
+</div>

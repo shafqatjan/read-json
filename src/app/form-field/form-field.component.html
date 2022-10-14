@@ -1,0 +1,40 @@
+<ng-container *ngIf="loaded">
+      <label *ngIf="mycontrol" [formGroup]="parentForm">
+            {{mycontrol.name}}:
+            <ng-container *ngIf="mycontrol.type == 'textfield' || mycontrol.type == 'email' || mycontrol.type == 'number'" >
+                  <input type="{{mycontrol.type == 'number' ? 'number' : ''}}" formControlName="{{mycontrol.name}}" class="form-control">
+            </ng-container>
+            <ng-container *ngIf="mycontrol.type == 'password'">
+                  <input type="password" formControlName="{{mycontrol.name}}" class="form-control">
+            </ng-container>
+            <ng-container *ngIf="mycontrol.type == 'select' || mycontrol.type == 'dropdown'">
+                  <select class="form-select" formControlName="{{mycontrol.name}}">
+                        <option *ngFor="let option of mycontrol.options" value="{{option.value}}">{{option.text}}
+                        </option>
+                  </select>
+            </ng-container>
+            <ng-container *ngIf="mycontrol.type == 'textarea'">
+                  <textarea formControlName="{{mycontrol.name}}" rows="10" class="form-control"
+                        cols="30"></textarea>
+
+            </ng-container>
+
+
+            <div *ngIf="formControl(mycontrol.name)?.invalid && 
+            (formControl(mycontrol.name)?.dirty || formControl(mycontrol.name)?.touched)" style="color:red">
+
+                  <ng-container *ngIf="formControl(mycontrol.name)?.hasError('required') ">
+                        Please provide a {{mycontrol.name}}.
+                  </ng-container>
+                  <ng-container *ngIf="formControl(mycontrol.name)?.hasError('email') ">
+                        Please provide a valid {{mycontrol.name}}.
+                  </ng-container>
+                  <ng-container *ngIf="formControl(mycontrol.name)?.hasError('minlength') ">
+                        Please provide detail min 5 and max 15 {{mycontrol.name}} character
+                        long.
+                  </ng-container>
+            </div>
+
+      </label>
+
+</ng-container>
